@@ -130,6 +130,11 @@ target_link_libraries(test_path_to_trajectory
 )
 target_compile_options(test_path_to_trajectory PRIVATE -std=c++11)
 
+add_executable(test_basic_trajectories src/test_basic_trajectories.cpp )
+target_link_libraries(test_basic_trajectories
+  ${catkin_LIBRARIES}
+)
+target_compile_options(test_basic_trajectories PRIVATE -std=c++11)
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
