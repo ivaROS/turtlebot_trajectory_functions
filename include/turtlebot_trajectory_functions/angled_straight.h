@@ -6,7 +6,8 @@
 namespace turtlebot_trajectory_functions
 {
 
-
+using namespace turtlebot_trajectory_generator;
+  
 /* The rhs of x' = f(x) defined as a class */
 class AngledStraight : public desired_traj_func{
 

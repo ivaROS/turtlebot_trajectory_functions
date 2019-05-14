@@ -18,12 +18,15 @@
 #include <tf_utils/odom_to_tf.h>
 #include <turtlebot_trajectory_functions/path.h>
 
+using namespace turtlebot_trajectory_generator;
+
 class TrajectoryGeneratorBridgeTester 
 {
+  
 public:
   typedef ni_state state_type;
   typedef ni_controller traj_func_type;
-  typedef trajectory_states<state_type, traj_func_type> traj_type;
+  typedef trajectory_generator::trajectory_states<state_type, traj_func_type> traj_type;
   typedef std::shared_ptr<traj_type> traj_type_ptr;
   
   typedef tf2_ros::MessageFilter<nav_msgs::Path> PathFilter;
@@ -35,7 +38,7 @@ private:
   std::string name_;
   ros::Publisher trajectory_publisher_, path_pub_, transformed_path_pub_;
   ros::Subscriber odom_sub_;
-  TrajectoryGeneratorBridge<state_type, traj_func_type>  traj_gen_bridge;
+  trajectory_generator::TrajectoryGeneratorBridge<state_type, traj_func_type>  traj_gen_bridge;
   
   tf_buffer_ptr tfBuffer_;
   transform_listener_ptr tf_listener_;
@@ -139,7 +142,7 @@ public:
     }
     */
     
-turtlebot_trajectory_functions::Path::Ptr dtraj = std::make_shared<turtlebot_trajectory_functions::Path>(path_t);
+    turtlebot_trajectory_functions::Path::Ptr dtraj = std::make_shared<turtlebot_trajectory_functions::Path>(path_t);
     
     double v_max=.5;
     double w_max=4;
@@ -163,7 +166,7 @@ turtlebot_trajectory_functions::Path::Ptr dtraj = std::make_shared<turtlebot_tra
     //traj->header.stamp = ros::Time::now();
     traj->header = path_t.header;
     traj->trajpntr = nc ;
-    traj->params = std::make_shared<traj_params>();
+    traj->params = std::make_shared<trajectory_generator::traj_params>();
     traj->params->tf=tf;
     traj->x0_.from(odom->pose.pose);
     traj->x0_.from(odom->twist.twist);

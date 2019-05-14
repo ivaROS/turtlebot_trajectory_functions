@@ -23,7 +23,8 @@
 
 namespace turtlebot_trajectory_functions
 {
-
+using namespace turtlebot_trajectory_generator;
+  
 class TrajectoryTester 
 {
 public:
@@ -57,11 +58,11 @@ public:
 private:
   typedef ni_state state_type;
   typedef ni_controller traj_func_type;
-  typedef trajectory_states<state_type, traj_func_type> traj_type;
+  typedef trajectory_generator::trajectory_states<state_type, traj_func_type> traj_type;
   typedef std::shared_ptr<traj_type> traj_type_ptr;
 
 private:
-  TrajectoryGeneratorBridge<state_type, traj_func_type>  traj_gen_bridge;
+  trajectory_generator::TrajectoryGeneratorBridge<state_type, traj_func_type>  traj_gen_bridge;
   ros::NodeHandle nh_, pnh_;
   std::string name_;
   std::string base_frame_id_;
@@ -193,7 +194,7 @@ void TrajectoryTester::make_trajectory(desired_traj_func::Ptr& dtraj)
   traj->header.frame_id = odom->child_frame_id;
   traj->header.stamp = odom->header.stamp;
   traj->trajpntr = nc ;
-  traj->params = std::make_shared<traj_params>();
+  traj->params = std::make_shared<trajectory_generator::traj_params>();
   traj->params->tf=tf;
   traj->x0_.from(odom->twist.twist);
   traj->x0_.lambda=.3;

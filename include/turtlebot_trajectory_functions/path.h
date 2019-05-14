@@ -19,6 +19,8 @@
 namespace turtlebot_trajectory_functions
 {
 
+using namespace turtlebot_trajectory_generator;
+  
 /* The rhs of x' = f(x) defined as a class */
 class Path : public virtual desired_traj_func{
   
