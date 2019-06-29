@@ -142,8 +142,9 @@ public:
     }
     */
     
-    turtlebot_trajectory_functions::Path::Ptr dtraj = std::make_shared<turtlebot_trajectory_functions::Path>(path_t);
-    
+    double v_des = .3;
+    turtlebot_trajectory_functions::Path::Ptr pathtraj = std::make_shared<turtlebot_trajectory_functions::Path>(path_t, v_des);
+    desired_traj_func::Ptr dtraj = pathtraj;
     double v_max=.5;
     double w_max=4;
     double a_max=.55;
@@ -153,11 +154,12 @@ public:
     traj_func_type::Ptr nc=std::make_shared<traj_func_type>(ni);
     nc->setTrajFunc(dtraj);
     
-    double tf;
-    double grid_spacing = .05;
-    double v_des=.3;
-    double step = grid_spacing / v_des;
-    tf = step*input_path_msg->poses.size();
+//     double tf;
+//     double grid_spacing = .05;
+//     double v_des=.3;
+//     double step = grid_spacing / v_des;
+//     tf = step*input_path_msg->poses.size();
+    double tf = pathtraj->getTF();
     
     ROS_INFO_STREAM("Tf=" << tf);
     
