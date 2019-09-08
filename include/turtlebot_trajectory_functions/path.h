@@ -91,7 +91,7 @@ private:
     double step = tf/x.size();
     
     
-    ROS_INFO_STREAM("Total length: " << total_length << ", desired v: " << v << "average spacing: " << total_length/x.size() << ", step: " << step << ", tf: " << tf);
+    ROS_INFO_STREAM("Total length: " << total_length << ", desired v: " << v << ", average spacing: " << total_length/x.size() << ", step: " << step << ", tf: " << tf);
     
     spline_x = boost::math::cubic_b_spline<double>(x.begin(),x.end(),0,step,0,0); //Assuming start from rest and end at rest
     spline_y = boost::math::cubic_b_spline<double>(y.begin(),y.end(),0,step,0,0);
