@@ -84,14 +84,14 @@ private:
       double spacing = std::sqrt((x[1]-x[0])*(x[1]-x[0])+(y[1]-y[0])*(y[1]-y[0]));
       double pose_step = spacing / v;
       double pose_tf = pose_step * x.size();
-      ROS_INFO_STREAM("Pose spacing: " << spacing << ", desired v: " << v << ", step: " << pose_step << ", tf: " << pose_tf);
+      ROS_DEBUG_STREAM("Pose spacing: " << spacing << ", desired v: " << v << ", step: " << pose_step << ", tf: " << pose_tf);
     }
     
     tf=total_length/v;
     double step = tf/x.size();
     
     
-    ROS_INFO_STREAM("Total length: " << total_length << ", desired v: " << v << "average spacing: " << total_length/x.size() << ", step: " << step << ", tf: " << tf);
+    ROS_DEBUG_STREAM("Total length: " << total_length << ", desired v: " << v << ", average spacing: " << total_length/x.size() << ", step: " << step << ", tf: " << tf);
     
     spline_x = boost::math::cubic_b_spline<double>(x.begin(),x.end(),0,step,0,0); //Assuming start from rest and end at rest
     spline_y = boost::math::cubic_b_spline<double>(y.begin(),y.end(),0,step,0,0);

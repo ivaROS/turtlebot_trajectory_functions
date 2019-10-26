@@ -144,7 +144,6 @@ public:
     
     double v_des = .3;
     turtlebot_trajectory_functions::Path::Ptr pathtraj = std::make_shared<turtlebot_trajectory_functions::Path>(path_t, v_des);
-    desired_traj_func::Ptr dtraj = pathtraj;
     double v_max=.5;
     double w_max=4;
     double a_max=.55;
@@ -152,7 +151,7 @@ public:
     
     near_identity ni(1,5,1,.01,v_max,w_max,a_max,w_dot_max);    
     traj_func_type::Ptr nc=std::make_shared<traj_func_type>(ni);
-    nc->setTrajFunc(dtraj);
+    nc->setTrajFunc(pathtraj);
     
 //     double tf;
 //     double grid_spacing = .05;
