@@ -1,5 +1,5 @@
-#ifndef TURTLEBOT_TRAJECTORY_FUNCTIONS_PATH_h
-#define TURTLEBOT_TRAJECTORY_FUNCTIONS_PATH_h
+#ifndef TURTLEBOT_TRAJECTORY_FUNCTIONS_PATH_H
+#define TURTLEBOT_TRAJECTORY_FUNCTIONS_PATH_H
 
 /*****************************************************************************
 ** Includes
@@ -106,7 +106,7 @@ private:
 
 } //namespace turtlebot_trajectory_functions
 
-#endif //TURTLEBOT_TRAJECTORY_FUNCTIONS_PATH_h
+#endif //TURTLEBOT_TRAJECTORY_FUNCTIONS_PATH_H
  
  
 
